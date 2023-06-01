@@ -8,7 +8,7 @@ from bot.database import Database
 db = Database()
 
 
-@ScreenShotBot.on_message(filters.private & filters.command("settings"))
+@ScreenShotBot.on_message(filters.command("settings"))
 async def start(c, m):
 
     await Utilities.display_settings(c, m, db)
