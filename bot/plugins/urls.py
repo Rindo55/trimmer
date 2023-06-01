@@ -9,7 +9,7 @@ from ..config import Config
 
 
 @ScreenShotBot.on_message(
-    & ((filters.text & ~filters.edited) | filters.media)
+    ((filters.text & ~filters.edited) | filters.media)
     & filters.incoming
 )
 async def _(c, m):
