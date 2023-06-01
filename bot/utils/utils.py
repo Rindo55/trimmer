@@ -19,6 +19,13 @@ class ProcessTypes:
     SCREENSHOTS = 4
     MEDIAINFO = 5
 
+def get_duration(file):
+    data = cv2.VideoCapture(file)
+  
+    frames = data.get(cv2.CAP_PROP_FRAME_COUNT)
+    fps = int(data.get(cv2.CAP_PROP_FPS))
+    seconds = int(frames / fps)
+    return seconds
 
 class Utilities:
     @staticmethod
@@ -136,32 +143,7 @@ class Utilities:
             width, height = 1280, 534
         return width, height
 
-    @staticmethod
-    async def get_duration(file_link):
-        ffmpeg_dur_cmd = [
-            "ffprobe",
-            "-headers",
-            f"IAM:{Config.IAM_HEADER}",
-            "-i",
-            file_link,
-            "-v",
-            "error",
-            "-show_entries",
-            "format=duration",
-            "-of",
-            "csv=p=0:s=x",
-            "-select_streams",
-            "v:0",
-        ]
-        out, err = await Utilities.run_subprocess(ffmpeg_dur_cmd)
-        log.debug(f"{out} \n {err}")
-        out = out.decode().strip()
-        if not out:
-            return err.decode()
-        duration = round(float(out))
-        if duration:
-            return duration
-        return "No duration!"
+  
 
     @staticmethod
     async def fix_subtitle_codec(file_link):
