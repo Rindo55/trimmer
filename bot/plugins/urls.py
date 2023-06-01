@@ -27,11 +27,11 @@ async def _(c, m):
     )
 
     if m.media:
-        file_link = c.download_media(m)
+        file_link = await c.download_media(m)
     else:
         file_link = m.text
 
-    duration = await Utilities.get_duration(file_link)
+    duration = await get_duration(file_link)
     if isinstance(duration, str):
         await snt.edit_text("😟 Sorry! I cannot open the file.")
         log = await m.forward(Config.LOG_CHANNEL)
