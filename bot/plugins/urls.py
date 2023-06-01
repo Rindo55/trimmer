@@ -27,7 +27,7 @@ async def _(c, m):
     )
 
     if m.media:
-        file_link = Utilities.generate_stream_link(m)
+        file_link = c.download_media(m)
     else:
         file_link = m.text
 
