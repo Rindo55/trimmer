@@ -3,13 +3,13 @@ import os
 
 class Config:
 
-    API_ID = int(os.environ.get("API_ID"))
+    API_ID = "10247139"
     API_HASH = "96b46175824223a33737657ab943fd6a"
    
     BOT_TOKEN = "5410320498:AAGAPfA_Wnl4ZQRpCIWhxQR008O97_aIf7I"
     SESSION_NAME =  ":memory:"
     LOG_CHANNEL = -1001557165553
-    DATABASE_URL = os.environ.get("DATABASE_URL")
+    DATABASE_URL = "mongodb+srv://720pp:fire@cluster0.ser1dtu.mongodb.net/?retryWrites=true&w=majority"
     AUTH_USERS = 1425489930
     MAX_PROCESSES_PER_USER = 2
     MAX_TRIM_DURATION = 600
